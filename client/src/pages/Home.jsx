@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import ImageSequence from '../components/ImageSequence';
 
 const Section = ({ children, className, style }) => (
-    <section className={`section ${className}`} style={style}>
+    <section className={`section ${className || ''}`} style={style}>
         <div className="container">{children}</div>
     </section>
 );
@@ -12,12 +12,12 @@ const Home = () => {
     return (
         <div className="home-page">
 
-            <section style={{
+            <section className="hero-section" style={{
                 position: 'relative',
                 height: '100vh',
                 backgroundImage: "url('/assets/banners/farmer-hero.png')",
                 backgroundSize: 'cover',
-                backgroundPosition: 'center 10%', // Shifted to hide baked-in links while ensuring no bottom gaps
+                backgroundPosition: 'center 10%',
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: '#3e362e',
                 display: 'flex',
@@ -36,7 +36,10 @@ const Home = () => {
                     <p>Freshness you can trust, quality you can taste.</p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px' }}>
+                <div className="categories-grid" style={{
+                    display: 'grid',
+                    gap: '30px'
+                }}>
                     {[
                         { name: 'Fresh Vegetables', icon: '🥦', color: '#e8f5e9' },
                         { name: 'Organic Fruits', icon: '🍎', color: '#fff3e0' },
@@ -63,8 +66,8 @@ const Home = () => {
             </Section>
 
             {/* Special Offer */}
-            <Section style={{ padding: '0' }}>
-                <div style={{
+            <Section className="offer-section" style={{ padding: '0' }}>
+                <div className="offer-banner" style={{
                     background: 'var(--primary-color)',
                     borderRadius: '24px',
                     overflow: 'hidden',
@@ -72,9 +75,9 @@ const Home = () => {
                     color: 'white',
                     position: 'relative'
                 }}>
-                    <div style={{ padding: '80px', flex: 1 }}>
+                    <div className="offer-content" style={{ flex: 1 }}>
                         <span style={{ background: 'rgba(255,255,255,0.2)', padding: '5px 15px', borderRadius: '20px', fontSize: '12px' }}>LIMITED OFFER</span>
-                        <h2 style={{ fontSize: '3rem', margin: '20px 0', fontFamily: "'Playfair Display', serif" }}>
+                        <h2 className="offer-title" style={{ fontFamily: "'Playfair Display', serif" }}>
                             Get 20% Off On Your <br /> First Order
                         </h2>
                         <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '30px' }}>
@@ -84,8 +87,8 @@ const Home = () => {
                             Claim Offer
                         </button>
                     </div>
-                    {/* Replaced static image with the interactive ImageSequence circle */}
-                    <div style={{
+
+                    <div className="offer-video-container" style={{
                         flex: 1,
                         background: '#f8fafc',
                         display: 'flex',

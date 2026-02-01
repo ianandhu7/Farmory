@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { cart } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,9 +25,8 @@ const Navbar = () => {
     { title: 'Blog', path: '/blog' }
   ];
 
-  // Hide navbar only on Home page when at the very top (scrolled === false)
   const isHomePage = location.pathname === '/';
-  if (isHomePage && !scrolled) return null;
+  if (isHomePage && !scrolled && !mobileMenuOpen) return null;
 
   return (
     <motion.nav
@@ -59,13 +59,12 @@ const Navbar = () => {
             justifyContent: 'center',
             color: 'white',
             fontWeight: 'bold',
-            fontSize: '20px',
-            boxShadow: '0 4px 10px rgba(44, 95, 45, 0.2)'
+            fontSize: '20px'
           }}>
             F
           </div>
-          <span style={{
-            fontSize: '24px',
+          <span className="logo-text" style={{
+            fontSize: '20px',
             fontWeight: '700',
             fontFamily: "'Playfair Display', serif",
             color: 'var(--text-color)'
@@ -74,8 +73,11 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Links */}
-        <ul style={{ display: 'flex', gap: '40px' }}>
+        {/* Desktop Links */}
+        <ul className="desktop-nav" style={{
+          display: 'flex',
+          gap: '40px'
+        }}>
           {menuItems.map((item) => (
             <li key={item.title}>
               <Link to={item.path} style={{
@@ -90,19 +92,14 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <button style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: 'inherit' }}>🔍</button>
-          <button
-            onClick={() => navigate('/login')}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: 'inherit' }}
-          >👤</button>
+        {/* Actions & Hamburger */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <button className="search-btn" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: 'inherit' }}>🔍</button>
+
           <Link to="/cart" style={{
             background: 'var(--light-gray)',
-            border: 'none',
-            cursor: 'pointer',
-            width: '45px',
-            height: '45px',
+            width: '40px',
+            height: '40px',
             borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
@@ -114,31 +111,97 @@ const Navbar = () => {
           }}>
             🛒
             {cart.length > 0 && (
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                style={{
-                  position: 'absolute',
-                  top: '-2px',
-                  right: '-2px',
-                  background: 'var(--accent-color)',
-                  color: 'white',
-                  fontSize: '10px',
-                  width: '18px',
-                  height: '18px',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 'bold'
-                }}
-              >
+              <span style={{
+                position: 'absolute',
+                top: '-2px',
+                right: '-2px',
+                background: 'var(--accent-color)',
+                color: 'white',
+                fontSize: '10px',
+                width: '16px',
+                height: '16px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: 'bold'
+              }}>
                 {cart.reduce((total, item) => total + item.quantity, 0)}
-              </motion.span>
+              </span>
             )}
           </Link>
+
+          {/* Hamburger Menu Toggle */}
+          <button
+            className="mobile-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{
+              background: 'none',
+              border: 'none',
+              fontSize: '24px',
+              cursor: 'pointer'
+            }}
+          >
+            {mobileMenuOpen ? '✕' : '☰'}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            style={{
+              background: 'white',
+              overflow: 'hidden',
+              borderTop: '1px solid var(--border-color)',
+              width: '100%'
+            }}
+          >
+            <ul style={{ padding: '20px' }}>
+              {menuItems.map((item) => (
+                <li key={item.title} style={{ marginBottom: '15px' }}>
+                  <Link
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    style={{
+                      fontSize: '18px',
+                      fontWeight: '600',
+                      color: 'var(--text-color)',
+                      display: 'block',
+                      padding: '10px'
+                    }}
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+              <li style={{ borderTop: '1px solid #efefef', paddingTop: '15px' }}>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    navigate('/login');
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '14px',
+                    background: 'var(--primary-color)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Login / Account
+                </button>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

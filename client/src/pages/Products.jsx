@@ -25,7 +25,7 @@ const Products = () => {
     return (
         <div className="products-page" style={{ paddingTop: '100px', minHeight: '100vh', background: '#fcfcfc' }}>
             {/* Page Header */}
-            <div style={{
+            <div className="products-header" style={{
                 background: 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://images.unsplash.com/photo-1464226184884-fa280b670b04?auto=format&fit=crop&q=80&w=1500")',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -35,7 +35,7 @@ const Products = () => {
                 marginBottom: '50px'
             }}>
                 <div className="container">
-                    <h1 style={{ fontSize: '3.5rem', marginBottom: '15px' }}>Our Fresh Harvest</h1>
+                    <h1>Our Fresh Harvest</h1>
                     <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.9)', maxWidth: '600px', margin: '0 auto' }}>
                         Browse our curated selection of 100% organic and fresh products directly from local farms.
                     </p>

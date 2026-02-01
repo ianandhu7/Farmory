@@ -11,9 +11,9 @@ const Footer = () => {
             color: '#1a1a1a'
         }}>
             <div className="container">
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1.2fr', gap: '40px', marginBottom: '60px' }}>
+                <div className="footer-grid" style={{ display: 'grid', gap: '40px', marginBottom: '60px' }}>
                     {/* Brand */}
-                    <div>
+                    <div className="footer-brand">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
                             <div style={{ width: '30px', height: '30px', background: 'var(--primary-color)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>F</div>
                             <h3 style={{ fontSize: '24px', fontFamily: "'Playfair Display', serif" }}>Farmory</h3>
@@ -30,7 +30,7 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div>
+                    <div className="footer-links">
                         <h4 style={{ marginBottom: '25px', fontSize: '16px', fontWeight: 'bold' }}>Quick Links</h4>
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                             {['Home', 'Shop', 'Our Story', 'Blog', 'Contact'].map(item => (
@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
 
                     {/* Help */}
-                    <div>
+                    <div className="footer-help">
                         <h4 style={{ marginBottom: '25px', fontSize: '16px', fontWeight: 'bold' }}>Help & Support</h4>
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                             {['FAQ', 'Shipping Info', 'Returns', 'Privacy Policy', 'Terms'].map(item => (
@@ -50,10 +50,10 @@ const Footer = () => {
                     </div>
 
                     {/* Newsletter */}
-                    <div>
+                    <div className="footer-subscribe">
                         <h4 style={{ marginBottom: '25px', fontSize: '16px', fontWeight: 'bold' }}>Subscribe</h4>
                         <p style={{ color: '#666', fontSize: '14px', marginBottom: '15px' }}>Join our community and get 10% off your first order.</p>
-                        <div style={{ display: 'flex' }}>
+                        <div className="subscribe-form" style={{ display: 'flex' }}>
                             <input type="email" placeholder="Your email address" style={{
                                 padding: '12px 15px',
                                 border: '1px solid #ddd',
@@ -73,7 +73,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div style={{ textAlign: 'center', paddingTop: '30px', borderTop: '1px solid #eee', color: '#999', fontSize: '13px' }}>
+                <div className="footer-bottom" style={{ textAlign: 'center', paddingTop: '30px', borderTop: '1px solid #eee', color: '#999', fontSize: '13px' }}>
                     <p>&copy; 2026 Farmory Inc. All rights reserved.</p>
                 </div>
             </div>

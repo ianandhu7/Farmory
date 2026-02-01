@@ -154,6 +154,143 @@ textarea:focus {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .desktop-nav,
+  .search-btn {
+    display: none !important;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .offer-banner {
+    flex-direction: column !important;
+  }
+
+  .offer-content {
+    padding: 40px 20px !important;
+  }
+
+  .offer-video-container {
+    height: 300px !important;
+  }
+
+  .offer-title {
+    font-size: 2rem !important;
+  }
+
+  .footer {
+    padding: 60px 0 30px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-toggle {
+    display: none !important;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin: 0 auto;
+  }
+
+  .footer-brand>div {
+    justify-content: center;
+  }
+
+  .footer-brand .flex {
+    justify-content: center;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .subscribe-form input,
+  .subscribe-form button {
+    border-radius: 4px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    display: none;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-section {
+    height: 60vh !important;
+  }
+
+  .products-header h1 {
+    font-size: 1.8rem !important;
+  }
+}
+
+/* Specific Offer Styling */
+.offer-content {
+  padding: 80px;
+}
+
+.offer-title {
+  font-size: 3rem;
+  margin: 20px 0;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
