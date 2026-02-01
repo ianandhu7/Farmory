@@ -6,6 +6,7 @@ import { useCart } from '../context/CartContext';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const { cart } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,8 +15,17 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) setMobileMenuOpen(false);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const menuItems = [
@@ -25,10 +35,7 @@ const Navbar = () => {
     { title: 'Blog', path: '/blog' }
   ];
 
-  // Hide navbar only on Home page Desktop when at the very top
   const isHomePage = location.pathname === '/';
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-
   if (isHomePage && !scrolled && !mobileMenuOpen && !isMobile) return null;
 
   return (

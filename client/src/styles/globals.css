@@ -179,15 +179,15 @@ textarea:focus {
 
 @media (max-width: 768px) {
   .section {
-    padding: 60px 0;
+    padding: 50px 0;
   }
 
   h1 {
-    font-size: 2.2rem;
+    font-size: 2rem !important;
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem !important;
   }
 
   .desktop-nav,
@@ -197,6 +197,7 @@ textarea:focus {
 
   .categories-grid {
     grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
   }
 
   .offer-banner {
@@ -204,15 +205,17 @@ textarea:focus {
   }
 
   .offer-content {
-    padding: 40px 20px !important;
+    padding: 30px 15px !important;
+    text-align: center;
   }
 
   .offer-video-container {
-    height: 300px !important;
+    height: 280px !important;
+    background: transparent !important;
   }
 
   .offer-title {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
   }
 
   .footer {
@@ -270,30 +273,26 @@ textarea:focus {
 
   .categories-grid {
     grid-template-columns: 1fr !important;
-    gap: 15px !important;
   }
 
   .hero-section {
     height: 70vh !important;
-    background-position: center 32% !important;
-    /* Pushes the top branding even further up */
+    background-size: 180% auto !important;
+    /* Zoom to make text readable */
+    background-position: 78% 38% !important;
+    /* Center the text/content focal point */
   }
 
   .products-header h1 {
+    font-size: 1.6rem !important;
+  }
+
+  h1 {
     font-size: 1.8rem !important;
   }
 
-  .section {
-    padding: 30px 0 !important;
-  }
-
-  .offer-banner {
-    border-radius: 16px !important;
-  }
-
-  .offer-video-container {
-    height: 250px !important;
-    background: transparent !important;
+  h2 {
+    font-size: 1.5rem !important;
   }
 }
 
