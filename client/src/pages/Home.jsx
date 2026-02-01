@@ -90,21 +90,13 @@ const Home = () => {
 
                     <div className="offer-video-container" style={{
                         flex: 1,
-                        background: '#f8fafc',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        position: 'relative'
+                        position: 'relative',
+                        overflow: 'hidden'
                     }}>
-                        <div style={{
-                            width: '100%',
-                            height: '100%',
-                            position: 'relative',
-                            overflow: 'hidden',
-                            boxShadow: 'inset 0 0 100px rgba(0,0,0,0.05)'
-                        }}>
-                            <ImageSequence />
-                        </div>
+                        <ImageSequence />
                     </div>
                 </div>
             </Section>
