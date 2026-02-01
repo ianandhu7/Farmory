@@ -270,14 +270,21 @@ textarea:focus {
 
   .categories-grid {
     grid-template-columns: 1fr !important;
+    gap: 15px !important;
   }
 
   .hero-section {
-    height: 60vh !important;
+    height: 70vh !important;
+    background-position: center 25% !important;
+    /* Forces the top branding out of view */
   }
 
   .products-header h1 {
     font-size: 1.8rem !important;
+  }
+
+  .section {
+    padding: 40px 0 !important;
   }
 }
 

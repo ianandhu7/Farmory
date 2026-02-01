@@ -25,8 +25,11 @@ const Navbar = () => {
     { title: 'Blog', path: '/blog' }
   ];
 
+  // Hide navbar only on Home page Desktop when at the very top
   const isHomePage = location.pathname === '/';
-  if (isHomePage && !scrolled && !mobileMenuOpen) return null;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+  if (isHomePage && !scrolled && !mobileMenuOpen && !isMobile) return null;
 
   return (
     <motion.nav
