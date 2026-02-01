@@ -179,15 +179,15 @@ textarea:focus {
 
 @media (max-width: 768px) {
   .section {
-    padding: 50px 0;
+    padding: 40px 0;
   }
 
   h1 {
-    font-size: 2rem !important;
+    font-size: 2.2rem !important;
   }
 
   h2 {
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
   }
 
   .desktop-nav,
@@ -202,20 +202,21 @@ textarea:focus {
 
   .offer-banner {
     flex-direction: column !important;
+    border-radius: 16px !important;
   }
 
   .offer-content {
-    padding: 30px 15px !important;
+    padding: 40px 20px !important;
     text-align: center;
   }
 
   .offer-video-container {
-    height: 280px !important;
+    height: 300px !important;
     background: transparent !important;
   }
 
   .offer-title {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
   }
 
   .footer {
@@ -276,23 +277,34 @@ textarea:focus {
   }
 
   .hero-section {
-    height: 70vh !important;
-    background-size: 180% auto !important;
-    /* Zoom to make text readable */
-    background-position: 78% 38% !important;
-    /* Center the text/content focal point */
+    height: 100vh !important;
+    background-size: cover !important;
+    background-position: 85% center !important;
+    /* Perfect crop for mobile text layout */
   }
 
   .products-header h1 {
-    font-size: 1.6rem !important;
-  }
-
-  h1 {
     font-size: 1.8rem !important;
   }
 
+  h1 {
+    font-size: 2rem !important;
+  }
+
   h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.6rem !important;
+  }
+
+  .offer-content {
+    padding: 30px 15px !important;
+  }
+
+  .offer-video-container {
+    height: 220px !important;
+  }
+
+  .section {
+    padding: 30px 0 !important;
   }
 }
 
