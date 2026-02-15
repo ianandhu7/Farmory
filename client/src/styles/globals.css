@@ -5,15 +5,42 @@
   --bg-color: #ffffff;
   --text-color: #1a1a1a;
   --text-light: #666666;
-  --primary-color: #2c5f2d;
-  /* Farm Green */
-  --secondary-color: #97bc62;
-  /* Light Green */
-  --accent-color: #ff8c00;
-  /* Orange for CTA/Badges */
+  --primary-color: #2E7D32;
+  /* New Green */
+  --secondary-color: #81C784;
+  /* New Light Green */
+  --accent-color: #6D4C41;
+  /* Brown Accent */
   --border-color: #e5e5e5;
   --light-gray: #f9f9f9;
   --nav-height: 80px;
+}
+
+/* Visibility Utilities */
+.desktop-only {
+  display: flex !important;
+}
+
+.mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex !important;
+  }
+
+  .flex-stack-mobile {
+    flex-direction: column !important;
+  }
+}
+
+.flex-stack-mobile {
+  display: flex;
 }
 
 * {
@@ -272,41 +299,43 @@ textarea:focus {
     padding: 0 16px;
   }
 
-  .categories-grid {
+  /* Force stack grids on very small screens */
+  .categories-grid,
+  .products-grid,
+  .footer-grid {
     grid-template-columns: 1fr !important;
   }
 
   .hero-section {
-    height: 100vh !important;
-    min-height: 100vh !important;
-    background-size: cover !important;
-    background-position: center 60% !important;
-    background-repeat: no-repeat !important;
-  }
-
-  .products-header h1 {
-    font-size: 1.8rem !important;
+    height: 70vh !important;
+    min-height: 500px !important;
+    background-attachment: scroll !important;
+    padding: 0 !important;
   }
 
   h1 {
-    font-size: 1.8rem !important;
+    font-size: 2.2rem !important;
   }
 
   h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.8rem !important;
+  }
+
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .offer-content {
     padding: 30px 15px !important;
   }
 
-  .offer-video-container {
-    height: 250px !important;
-    width: 100% !important;
-  }
-
   .section {
-    padding: 25px 0 !important;
+    padding: 40px 0 !important;
   }
 }
 

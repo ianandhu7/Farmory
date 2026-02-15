@@ -61,7 +61,7 @@ const Cart = () => {
                                         <div style={{ flex: 1 }}>
                                             <span style={{ fontSize: '11px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: '700' }}>{item.category}</span>
                                             <h3 style={{ fontSize: '18px', margin: '4px 0', fontFamily: "'Playfair Display', serif" }}>{item.name}</h3>
-                                            <p style={{ fontWeight: '700', color: 'var(--primary-color)' }}>${item.price.toFixed(2)}</p>
+                                            <p style={{ fontWeight: '700', color: 'var(--primary-color)' }}>₹{item.price.toFixed(2)}</p>
                                         </div>
 
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px', background: '#f8fafc', padding: '8px 15px', borderRadius: '50px' }}>
@@ -77,7 +77,7 @@ const Cart = () => {
                                         </div>
 
                                         <div style={{ width: '100px', textAlign: 'right', fontWeight: '800' }}>
-                                            ${(item.price * item.quantity).toFixed(2)}
+                                            ₹{(item.price * item.quantity).toFixed(2)}
                                         </div>
 
                                         <button
@@ -116,16 +116,16 @@ const Cart = () => {
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b' }}>
                                         <span>Subtotal</span>
-                                        <span>${subtotal.toFixed(2)}</span>
+                                        <span>₹{subtotal.toFixed(2)}</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b' }}>
                                         <span>Shipping</span>
-                                        <span>${shipping.toFixed(2)}</span>
+                                        <span>₹{shipping.toFixed(2)}</span>
                                     </div>
                                     <div style={{ height: '1px', background: '#f1f5f9', margin: '10px 0' }}></div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '20px', fontWeight: '800' }}>
                                         <span>Total</span>
-                                        <span style={{ color: 'var(--primary-color)' }}>${total.toFixed(2)}</span>
+                                        <span style={{ color: 'var(--primary-color)' }}>₹{total.toFixed(2)}</span>
                                     </div>
                                 </div>
 

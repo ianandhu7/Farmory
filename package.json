@@ -1,0 +1,15 @@
+{
+    "name": "farmory",
+    "version": "1.0.0",
+    "description": "Farmory - Organic Farm Marketplace",
+    "private": true,
+    "scripts": {
+        "client": "cd client && npm run dev",
+        "server": "cd server && npm run dev",
+        "admin": "cd admin && npm run dev",
+        "dev": "npx concurrently \"npm run server\" \"npm run client\" \"npm run admin\""
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.1"
+    }
+}

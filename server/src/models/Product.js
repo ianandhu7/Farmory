@@ -19,7 +19,11 @@ const productSchema = new mongoose.Schema(
         category: {
             type: String,
             required: [true, 'Please provide a product category'],
-            enum: ['vegetables', 'fruits', 'grains', 'dairy', 'meat', 'other'],
+            enum: ['Livestock Products', 'Vegetables', 'Fruits', 'Grains & Seeds', 'Microgreens', 'Organic Packs'],
+        },
+        subcategory: {
+            type: String,
+            required: [true, 'Please provide a product subcategory'],
         },
         images: [
             {
@@ -36,7 +40,7 @@ const productSchema = new mongoose.Schema(
         unit: {
             type: String,
             required: true,
-            enum: ['kg', 'lb', 'piece', 'dozen', 'liter'],
+            enum: ['kg', 'lb', 'piece', 'bundle', 'dozen', 'liter', 'pack'],
             default: 'kg',
         },
         rating: {

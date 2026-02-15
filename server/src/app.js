@@ -9,8 +9,9 @@ const authRoutes = require('./routes/auth.routes');
 const productRoutes = require('./routes/product.routes');
 const orderRoutes = require('./routes/order.routes');
 
+const path = require('path');
 // Load env vars
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 // Connect to database
 connectDB();
@@ -31,8 +32,10 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    });
+}
 
 module.exports = app;

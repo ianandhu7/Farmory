@@ -15,11 +15,11 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="footer-brand">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                            <div style={{ width: '30px', height: '30px', background: 'var(--primary-color)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>F</div>
-                            <h3 style={{ fontSize: '24px', fontFamily: "'Playfair Display', serif" }}>Farmory</h3>
+                            <div style={{ width: '30px', height: '30px', background: 'var(--primary-color)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>R</div>
+                            <h3 style={{ fontSize: '24px', letterSpacing: '1.5px', fontWeight: '800' }}>RAECH HEL</h3>
                         </div>
                         <p style={{ color: '#666', lineHeight: '1.6', maxWidth: '300px' }}>
-                            We bring the season's best produce from local sustainable farms directly to your doorstep. Freshness guaranteed.
+                            Farm Fresh – From Farm to Your Home. We bring the season's best produce directly to your doorstep.
                         </p>
                         <div style={{ display: 'flex', gap: '15px', marginTop: '20px' }}>
                             {/* Social Placeholders */}
@@ -74,7 +74,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-bottom" style={{ textAlign: 'center', paddingTop: '30px', borderTop: '1px solid #eee', color: '#999', fontSize: '13px' }}>
-                    <p>&copy; 2026 Farmory Inc. All rights reserved.</p>
+                    <p>&copy; 2026 RAECH HEL Inc. All rights reserved.</p>
                 </div>
             </div>
         </footer>

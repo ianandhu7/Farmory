@@ -28,15 +28,31 @@ const Navbar = () => {
     };
   }, []);
 
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+
   const menuItems = [
+    { title: 'Home', path: '/' },
     { title: 'Shop', path: '/products' },
-    { title: 'Our Story', path: '/about' },
-    { title: 'Recipes', path: '/recipes' },
-    { title: 'Blog', path: '/blog' }
+    {
+      title: 'Categories',
+      path: '#',
+      dropdown: [
+        'Livestock Products',
+        'Vegetables',
+        'Fruits',
+        'Grains & Seeds',
+        'Microgreens',
+        'Organic Packs'
+      ]
+    },
+    { title: 'About', path: '/about' },
+    { title: 'Contact', path: '/contact' }
   ];
 
   const isHomePage = location.pathname === '/';
-  if (isHomePage && !scrolled && !mobileMenuOpen && !isMobile) return null;
+  // Always show navbar for now to ensure visibility during development, 
+  // or adjust the logic if it was intentionally hidden on home scroll
+  // if (isHomePage && !scrolled && !mobileMenuOpen && !isMobile) return null;
 
   return (
     <motion.nav
@@ -49,7 +65,7 @@ const Navbar = () => {
         left: 0,
         right: 0,
         zIndex: 1000,
-        background: 'rgba(255, 255, 255, 0.95)',
+        background: 'rgba(255, 255, 255, 0.98)',
         backdropFilter: 'blur(10px)',
         boxShadow: '0 2px 20px rgba(0,0,0,0.05)',
         padding: '12px 0',
@@ -63,7 +79,7 @@ const Navbar = () => {
             width: '40px',
             height: '40px',
             background: 'var(--primary-color)',
-            borderRadius: '50%',
+            borderRadius: '12px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -71,40 +87,119 @@ const Navbar = () => {
             fontWeight: 'bold',
             fontSize: '20px'
           }}>
-            F
+            R
           </div>
-          <span className="logo-text" style={{
-            fontSize: '20px',
-            fontWeight: '700',
-            fontFamily: "'Playfair Display', serif",
-            color: 'var(--text-color)'
-          }}>
-            Farmory
-          </span>
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
+            <span className="logo-text" style={{
+              fontSize: '22px',
+              fontWeight: '800',
+              fontFamily: "'Outfit', sans-serif",
+              color: 'var(--primary-color)',
+              letterSpacing: '2px'
+            }}>
+              RAECH HEL
+            </span>
+            <span style={{ fontSize: '10px', color: '#666', fontWeight: '600', letterSpacing: '0.5px' }}>
+              FARM FRESH
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Links */}
         <ul className="desktop-nav" style={{
           display: 'flex',
-          gap: '40px'
+          gap: '30px',
+          alignItems: 'center'
         }}>
           {menuItems.map((item) => (
-            <li key={item.title}>
+            <li
+              key={item.title}
+              onMouseEnter={() => item.dropdown && setCategoriesOpen(true)}
+              onMouseLeave={() => item.dropdown && setCategoriesOpen(false)}
+              style={{ position: 'relative' }}
+            >
               <Link to={item.path} style={{
                 fontSize: '15px',
                 fontWeight: '600',
                 color: 'var(--text-color)',
-                opacity: 0.9
+                opacity: location.pathname === item.path ? 1 : 0.7,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px'
               }}>
                 {item.title}
+                {item.dropdown && <span style={{ fontSize: '10px' }}>▼</span>}
               </Link>
+
+              {item.dropdown && (
+                <AnimatePresence>
+                  {categoriesOpen && (
+                    <motion.ul
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 15 }}
+                      style={{
+                        position: 'absolute',
+                        top: '100%',
+                        left: '0',
+                        background: 'white',
+                        minWidth: '220px',
+                        boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                        padding: '15px 0',
+                        borderRadius: '12px',
+                        marginTop: '15px',
+                        border: '1px solid var(--border-color)'
+                      }}
+                    >
+                      {item.dropdown.map((cat) => (
+                        <li key={cat}>
+                          <Link
+                            to={`/products?category=${encodeURIComponent(cat)}`}
+                            style={{
+                              padding: '10px 20px',
+                              display: 'block',
+                              fontSize: '14px',
+                              color: 'var(--text-color)',
+                              fontWeight: '500'
+                            }}
+                            className="dropdown-item"
+                          >
+                            {cat}
+                          </Link>
+                        </li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              )}
             </li>
           ))}
         </ul>
 
         {/* Actions & Hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          <button className="search-btn" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: 'inherit' }}>🔍</button>
+          {/* Search Bar - Desktop */}
+          <div style={{ position: 'relative', display: isMobile ? 'none' : 'block' }}>
+            <input
+              type="text"
+              placeholder="Search farm fresh..."
+              style={{
+                padding: '10px 15px 10px 40px',
+                borderRadius: '50px',
+                border: '1px solid #eee',
+                background: '#f8f8f8',
+                fontSize: '14px',
+                width: '200px',
+                outline: 'none',
+                transition: 'all 0.3s ease'
+              }}
+              onFocus={(e) => e.target.style.width = '250px'}
+              onBlur={(e) => e.target.style.width = '200px'}
+            />
+            <span style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }}>🔍</span>
+          </div>
+
+          <button className="search-btn" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: 'inherit', display: isMobile ? 'block' : 'none' }}>🔍</button>
 
           <Link to="/cart" style={{
             background: 'var(--light-gray)',

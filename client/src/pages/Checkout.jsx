@@ -81,11 +81,26 @@ const Checkout = () => {
                             {step === 2 && (
                                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                                     <h3 style={{ marginBottom: '10px' }}>Payment Method</h3>
-                                    <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid var(--primary-color)', display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                        <input type="radio" checked readOnly style={{ accentColor: 'var(--primary-color)' }} />
-                                        <span style={{ fontWeight: '600' }}>Credit / Debit Card</span>
+
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                                        <div style={{ background: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid var(--primary-color)', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                            <input type="radio" name="payment" checked readOnly style={{ accentColor: 'var(--primary-color)' }} />
+                                            <div>
+                                                <span style={{ fontWeight: '600', display: 'block' }}>Credit / Debit Card</span>
+                                                <span style={{ fontSize: '12px', color: '#666' }}>Secure payment via card</span>
+                                            </div>
+                                        </div>
+
+                                        <div style={{ background: 'white', padding: '20px', borderRadius: '12px', border: '1px solid #eee', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                            <input type="radio" name="payment" style={{ accentColor: 'var(--primary-color)' }} />
+                                            <div>
+                                                <span style={{ fontWeight: '600', display: 'block' }}>Cash on Delivery (COD)</span>
+                                                <span style={{ fontSize: '12px', color: '#666' }}>Pay when your fresh items arrive</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="form-group">
+
+                                    <div className="form-group" style={{ marginTop: '20px' }}>
                                         <label style={{ display: 'block', fontSize: '13px', fontWeight: '700', marginBottom: '8px' }}>Card Number</label>
                                         <input type="text" placeholder="xxxx xxxx xxxx xxxx" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #e2e8f0' }} />
                                     </div>
@@ -99,7 +114,7 @@ const Checkout = () => {
                                             <input type="text" placeholder="xxx" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #e2e8f0' }} />
                                         </div>
                                     </div>
-                                    <div style={{ display: 'flex', gap: '15px' }}>
+                                    <div style={{ display: 'flex', gap: '15px', marginTop: '30px' }}>
                                         <button type="button" onClick={() => setStep(1)} className="btn btn-outline" style={{ flex: 1 }}>Back</button>
                                         <button type="button" onClick={() => setStep(3)} className="btn btn-primary" style={{ flex: 1 }}>Review Order</button>
                                     </div>
@@ -133,22 +148,22 @@ const Checkout = () => {
                                             <h4 style={{ fontSize: '14px', marginBottom: '2px' }}>{item.name}</h4>
                                             <p style={{ fontSize: '13px', color: '#64748b' }}>Qty: {item.quantity}</p>
                                         </div>
-                                        <span style={{ fontWeight: '700' }}>${(item.price * item.quantity).toFixed(2)}</span>
+                                        <span style={{ fontWeight: '700' }}>₹{(item.price * item.quantity).toFixed(2)}</span>
                                     </div>
                                 ))}
                             </div>
                             <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '20px' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', color: '#64748b' }}>
                                     <span>Subtotal</span>
-                                    <span>${subtotal.toFixed(2)}</span>
+                                    <span>₹{subtotal.toFixed(2)}</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', color: '#64748b' }}>
                                     <span>Shipping</span>
-                                    <span>${shipping.toFixed(2)}</span>
+                                    <span>₹{shipping.toFixed(2)}</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: '800', marginTop: '10px' }}>
                                     <span>Total</span>
-                                    <span style={{ color: 'var(--primary-color)' }}>${total.toFixed(2)}</span>
+                                    <span style={{ color: 'var(--primary-color)' }}>₹{total.toFixed(2)}</span>
                                 </div>
                             </div>
                         </div>

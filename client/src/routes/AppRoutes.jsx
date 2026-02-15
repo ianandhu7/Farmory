@@ -8,6 +8,8 @@ import Checkout from '../pages/Checkout';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 
+import ProductDetails from '../pages/ProductDetails';
+
 const AppRoutes = () => {
     return (
         <BrowserRouter>
@@ -15,6 +17,7 @@ const AppRoutes = () => {
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<Home />} />
                     <Route path="products" element={<Products />} />
+                    <Route path="product/:id" element={<ProductDetails />} />
                     <Route path="cart" element={<Cart />} />
                     <Route path="checkout" element={<Checkout />} />
                     <Route path="login" element={<Login />} />
